@@ -1,0 +1,115 @@
+/* ─────────────────────────────────────────────────────────────
+   PRINT — what the browser sees when you Save as PDF
+   Strip every UI chrome; promote the .invoice to the page.
+
+   Works on:
+   • Desktop: Chrome / Edge / Safari / Firefox / Brave  → Save as PDF
+   • Android: Chrome (and forks) → "Save as PDF" destination
+   • iOS / iPadOS: Safari → tap Share → "Save to Files"   (vector PDF)
+   • In-app browsers (FB / Insta / TikTok / Zalo) may not surface print —
+     direct users to open the page in their real browser if Export does
+     nothing on tap.
+   ───────────────────────────────────────────────────────────── */
+
+@media print {
+  /* page setup — US Letter, no browser margins */
+  @page {
+    size: 8.5in 11in;
+    margin: 0;
+  }
+
+  html, body {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: var(--paper, #ffffff) !important;
+    color: var(--ink, #000) !important;
+    /* Force backgrounds & colors to print (otherwise Chrome/Safari may strip
+       background fills like the Bauhaus red disc, the inverted total bar,
+       the Mono dotted dividers, etc.). */
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+    overflow: visible !important;
+    height: auto !important;
+  }
+
+  /* hide everything except the invoice (covers desktop + tablet + mobile chrome) */
+  .app-header,
+  .editor-layout > .tab-rail,
+  .editor-layout > .tab-panel,
+  .edit-drawer,
+  .edit-fab,
+  .edit-scrim,
+  .preview-fab,
+  .preview-scrim,
+  .preview-toolbar,
+  .preview-close,
+  .zoom-toolbar,
+  .skip-link,
+  .site-header,
+  .site-footer,
+  .hero,
+  .landing,
+  .cta-strip,
+  .modal-overlay {
+    display: none !important;
+  }
+
+  /* unwrap any layout grids that wrap the invoice */
+  .editor-layout {
+    display: block !important;
+    height: auto !important;
+    grid-template-columns: none !important;
+    grid-template-rows: none !important;
+  }
+
+  .preview-pane {
+    /* on tablet/mobile this is fixed/transformed — undo all of that */
+    display: block !important;
+    position: static !important;
+    transform: none !important;
+    background: transparent !important;
+    overflow: visible !important;
+    height: auto !important;
+    max-height: none !important;
+    width: auto !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  .preview-stage {
+    padding: 0 !important;
+    display: block !important;
+  }
+
+  /* the invoice IS the page */
+  .invoice {
+    width: 8.5in !important;
+    min-height: 11in !important;
+    margin: 0 !important;
+    /* defeat any zoom transform — printed page is always 1:1 native size */
+    transform: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    animation: none !important;
+    transition: none !important;
+    page-break-inside: avoid;
+    /* leave existing --padding from theme; the page itself has no margin */
+  }
+
+  /* ensure body bg matches paper so any bleed shows the right color */
+  body {
+    background: var(--paper, #ffffff) !important;
+  }
+
+  /* hide placeholder text so empty fields don't print "Full Name" */
+  .invoice .is-placeholder {
+    visibility: hidden !important;
+  }
+
+  /* hide the drag-handle pseudo-element on mobile sheet */
+  .edit-drawer::before,
+  .preview-pane::before {
+    display: none !important;
+  }
+}

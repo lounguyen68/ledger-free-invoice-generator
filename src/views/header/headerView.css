@@ -1,0 +1,70 @@
+/* ─── HEADER (editor) ────────────────────────────────────────── */
+
+.app-header {
+  position: relative;
+  z-index: 20;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 24px;
+  padding: 12px 20px;
+  background: var(--tool-surface);
+  border-bottom: 1px solid var(--tool-border);
+  height: 56px;
+}
+
+.app-header .brand-name { font-size: 19px; }
+
+.app-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-self: start;
+  margin-left: 8px;
+  font-family: var(--ui-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--tool-faint);
+}
+
+.app-breadcrumb .sep { color: var(--tool-rule); }
+
+.app-breadcrumb a {
+  color: var(--tool-mute);
+  text-decoration: none;
+}
+.app-breadcrumb a:hover { color: var(--tool-text); }
+
+.app-actions { display: flex; gap: 8px; justify-self: end; }
+
+@media (max-width: 720px) {
+  .app-header {
+    grid-template-columns: auto 1fr auto;
+    gap: 12px;
+    padding: 10px 14px;
+    height: 52px;
+  }
+  .app-breadcrumb { display: none; }
+  .app-header .brand-name { font-size: 17px; }
+  .app-actions { gap: 6px; }
+  .app-actions .btn { padding: 8px 12px; font-size: 12.5px; }
+
+  /* Reset shrinks to icon-only on phones — hide the label cleanly so the
+     glyph stays optically centered inside a perfect square. */
+  .app-actions #reset-btn {
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    gap: 0;
+    justify-content: center;
+  }
+  .app-actions #reset-btn .btn-label { display: none; }
+  .app-actions #reset-btn .btn-glyph { font-size: 16px; }
+}
+
+@media (max-width: 380px) {
+  .app-header { gap: 6px; padding: 8px 10px; }
+  .app-header .brand-name { font-size: 15px; }
+  .app-actions .btn { padding: 7px 10px; }
+}

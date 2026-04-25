@@ -1,0 +1,19 @@
+{
+  "name": "frontend-homework",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch",
+    "serve": "live-server --port=5173 --no-browser --ignore=node_modules,src"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "AGPL-3.0-only",
+  "description": "",
+  "devDependencies": {
+    "live-server": "^1.2.2",
+    "typescript": "^6.0.3"
+  }
+}

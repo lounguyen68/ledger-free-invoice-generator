@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Ledger logo">
+  <defs>
+    <style>
+      .l-frame { fill: none; stroke: currentColor; stroke-width: 2; }
+      .l-mark  { fill: currentColor; font-family: "Fraunces", "Playfair Display", Georgia, serif; font-style: italic; font-weight: 700; }
+    </style>
+  </defs>
+  <rect class="l-frame" x="3" y="3" width="58" height="58" rx="2"/>
+  <rect class="l-frame" x="6" y="6" width="52" height="52" rx="1" stroke-width="0.6"/>
+  <text class="l-mark" x="32" y="46" text-anchor="middle" font-size="48">§</text>
+  <line x1="14" y1="54" x2="50" y2="54" stroke="currentColor" stroke-width="0.6"/>
+</svg>

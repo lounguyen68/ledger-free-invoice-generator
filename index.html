@@ -1,0 +1,491 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <title>Free Invoice Generator — 12 Templates, Deep Customize, PDF Export | Ledger</title>
+    <meta name="description" content="Compose invoices that actually look designed. Twelve typographic templates, deep theme controls (color, font, density, rules), instant PDF export — free, no signup, no tracking." />
+    <link rel="canonical" href="https://spacingmind.github.io/ledger-invoice-generator/" />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
+    <meta name="theme-color" content="#1c1812" />
+    <meta name="keywords" content="free invoice generator, invoice maker, invoice template, pdf invoice generator, customizable invoice, online invoice creator, freelancer invoice, contractor invoice, no signup invoice generator, invoice theme editor" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Ledger" />
+    <meta property="og:title" content="Free Invoice Generator — 12 Templates, Deep Customize, PDF Export" />
+    <meta property="og:description" content="Twelve typographic templates, deep theme controls, instant PDF export. Free, no signup, no tracking — runs in your browser." />
+    <meta property="og:url" content="https://spacingmind.github.io/ledger-invoice-generator/" />
+    <meta property="og:image" content="https://spacingmind.github.io/ledger-invoice-generator/assets/og-image.svg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Free Invoice Generator — 12 Templates | Ledger" />
+    <meta name="twitter:description" content="Twelve templates, deep customize, PDF export. Free, no signup." />
+    <meta name="twitter:image" content="https://spacingmind.github.io/ledger-invoice-generator/assets/og-image.svg" />
+
+    <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg" />
+    <link rel="stylesheet" href="./src/styles.css" />
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Ledger — Free Invoice Generator",
+      "applicationCategory": "BusinessApplication",
+      "applicationSubCategory": "InvoiceGenerator",
+      "operatingSystem": "Any (web browser)",
+      "url": "https://spacingmind.github.io/ledger-invoice-generator/",
+      "description": "Free, no-signup invoice generator with twelve typographic presets and deep theme customization. Runs entirely client-side.",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "featureList": [
+        "Twelve hand-crafted typographic invoice presets",
+        "Deep theme customization (color, fonts, density, rules, total style, radius)",
+        "Instant PDF export, US Letter size",
+        "No account or signup required",
+        "Runs entirely client-side, your data never leaves the browser",
+        "Photocopy-safe Classic preset",
+        "Open source"
+      ],
+      "isAccessibleForFree": true,
+      "browserRequirements": "Requires a modern web browser with JavaScript enabled.",
+      "softwareVersion": "2.0",
+      "codeRepository": "https://github.com/spacingmind/ledger-invoice-generator"
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "Is this invoice generator really free?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Ledger is 100% free with no signup, no paywall, no usage limits. Generate unlimited invoices and download as many PDFs as you want." } },
+        { "@type": "Question", "name": "Do I need to create an account?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. Open the page, fill in the form, download the PDF. There's no account system." } },
+        { "@type": "Question", "name": "Can I download my invoice as a PDF?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. The export button generates a US Letter (8.5 × 11 in) PDF locally in your browser." } },
+        { "@type": "Question", "name": "Does my data get uploaded?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. Ledger runs entirely client-side. No analytics, no telemetry. Your invoice never leaves the browser." } },
+        { "@type": "Question", "name": "How customizable is the theme?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Pick from 12 presets, then tweak every token: paper color, ink color, accent, all three font families, display weight, italic toggle, letter spacing, title scale, figure style (lining/oldstyle/tabular), density, rule weight, total bar style, and radius." } },
+        { "@type": "Question", "name": "Can I save my theme?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Your theme and invoice content auto-save to your browser. Export tab also lets you copy the theme as JSON to paste into another browser." } },
+        { "@type": "Question", "name": "Is it photocopy-safe?",
+          "acceptedAnswer": { "@type": "Answer", "text": "The Classic preset is strict pure black on white, designed to survive photocopying, faxing, and grayscale printing." } },
+        { "@type": "Question", "name": "How long should I keep invoices?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Most jurisdictions require 3 to 7 years for tax purposes. Check your local rules." } }
+      ]
+    }
+    </script>
+  </head>
+  <body class="landing-body">
+    <a href="#hero" class="skip-link">Skip to content</a>
+
+    <header class="site-header" role="banner">
+      <a class="brand" href="./" aria-label="Ledger — home">
+        <svg class="brand-logo" viewBox="0 0 64 64" aria-hidden="true">
+          <rect x="3" y="3" width="58" height="58" rx="2" fill="none" stroke="currentColor" stroke-width="2"/>
+          <rect x="6" y="6" width="52" height="52" rx="1" fill="none" stroke="currentColor" stroke-width="0.6"/>
+          <text x="32" y="46" text-anchor="middle" font-family="Fraunces, Georgia, serif"
+                font-style="italic" font-weight="700" font-size="44" fill="currentColor">§</text>
+          <line x1="14" y1="54" x2="50" y2="54" stroke="currentColor" stroke-width="0.6"/>
+        </svg>
+        <span class="brand-name">Ledger</span>
+        <span class="brand-sep">—</span>
+        <span class="brand-sub">an invoice composer</span>
+      </a>
+
+      <nav class="site-nav" aria-label="Primary">
+        <a href="#templates">Templates</a>
+        <a href="#how">How it works</a>
+        <a href="#features">Features</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+
+      <div class="site-cta">
+        <a href="https://github.com/spacingmind/ledger-invoice-generator"
+           class="icon-link" rel="noopener" aria-label="View source on GitHub">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+            <path fill="currentColor" d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-1.95c-3.2.7-3.87-1.54-3.87-1.54-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.18-3.1-.12-.29-.51-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.04 11.04 0 0 1 5.79 0c2.21-1.49 3.18-1.18 3.18-1.18.62 1.59.23 2.76.11 3.05.74.81 1.18 1.84 1.18 3.1 0 4.42-2.69 5.39-5.25 5.68.41.35.78 1.05.78 2.12v3.14c0 .31.21.68.8.56A10.51 10.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/>
+          </svg>
+        </a>
+        <a href="./app.html" class="cta-primary">Open the editor</a>
+      </div>
+    </header>
+
+    <main role="main">
+      <!-- ─── HERO ─────────────────────────────────────────────── -->
+      <section class="hero" id="hero">
+        <div class="hero-inner">
+          <div class="hero-copy">
+            <span class="hero-eyebrow">
+              <span class="hero-eyebrow-dot"></span>
+              free · no signup · 12 templates
+            </span>
+            <h1 class="hero-title">
+              Invoice, <em>composed.</em><br/>
+              Not assembled.
+            </h1>
+            <p class="hero-lede">
+              The free invoice generator built for people who care what a document looks like.
+              Twelve typographic presets. Deep theme controls — color, font, density, rules, total bar.
+              Instant PDF, no signup, no upload.
+            </p>
+            <div class="hero-actions">
+              <a href="./app.html" class="cta-primary">Create your invoice</a>
+              <a href="#templates" class="cta-secondary">See the templates →</a>
+            </div>
+            <div class="hero-trust">
+              <span>Free forever</span>
+              <span>No signup</span>
+              <span>No tracking</span>
+              <span>Open source</span>
+            </div>
+          </div>
+
+          <!-- visual: stacked invoice mockups -->
+          <div class="hero-visual" aria-hidden="true">
+            <div class="hero-mock hero-mock-3">
+              <div class="mock-h">INVOICE</div>
+              <div class="mock-rules"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+              <div class="mock-total"><span>TOTAL</span><span>$2,400</span></div>
+            </div>
+            <div class="hero-mock hero-mock-2">
+              <div class="mock-h">Invoice</div>
+              <div class="mock-rules"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+              <div class="mock-total"><span>TOTAL</span><span>$1,760</span></div>
+            </div>
+            <div class="hero-mock hero-mock-1">
+              <div class="mock-h">INVOICE</div>
+              <div class="mock-rules"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+              <div class="mock-total"><span>TOTAL</span><span>$880</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ─── TEMPLATES ────────────────────────────────────────── -->
+      <section id="templates" class="landing landing--templates" aria-labelledby="templates-h">
+        <div class="landing-inner">
+          <header class="landing-head">
+            <span class="landing-eyebrow">§ twelve templates</span>
+            <h2 id="templates-h" class="landing-title">Hand-crafted, not generated.</h2>
+            <p class="landing-lede">Most invoice tools give you 500 spreadsheets dressed as templates. Ledger gives you ten — each a deliberate typographic position. And every one is the starting point for further customization.</p>
+          </header>
+
+          <ol class="template-grid">
+            <li class="template-card">
+              <a class="template-thumb thumb--classic" href="./app.html" aria-label="Try the Classic template">
+                <span class="t-num">01</span><span class="t-mark">INVOICE</span><span class="t-rules"></span>
+              </a>
+              <h3 class="template-name">Classic</h3>
+              <p class="template-desc"><strong>Strict black-on-white.</strong> Built to survive photocopiers, faxes, grayscale printers, and ten-year archive boxes.</p>
+            </li>
+            <li class="template-card">
+              <a class="template-thumb thumb--ledger" href="./app.html" aria-label="Try Ledger">
+                <span class="t-num">02</span><span class="t-mark">Invoice</span><span class="t-rules"></span>
+              </a>
+              <h3 class="template-name">Ledger</h3>
+              <p class="template-desc"><strong>Parchment editorial.</strong> Fraunces on cream, oxblood labels, gilt total bar.</p>
+            </li>
+            <li class="template-card">
+              <a class="template-thumb thumb--bauhaus" href="./app.html" aria-label="Try Bauhaus">
+                <span class="t-num">03</span><span class="t-mark">INVOICE</span><span class="t-rules"></span>
+              </a>
+              <h3 class="template-name">Bauhaus</h3>
+              <p class="template-desc"><strong>Geometric, primary, unflinching.</strong> Heavy rules, white-on-ink labels, red disc.</p>
+            </li>
+            <li class="template-card">
+              <a class="template-thumb thumb--gazette" href="./app.html" aria-label="Try Gazette">
+                <span class="t-num">04</span><span class="t-mark"><em>Invoice</em></span><span class="t-rules"></span>
+              </a>
+              <h3 class="template-name">Gazette</h3>
+              <p class="template-desc"><strong>Newspaper masthead in italic.</strong> Playfair display, Archivo Narrow caps, double rules.</p>
+            </li>
+            <li class="template-card">
+              <a class="template-thumb thumb--mono" href="./app.html" aria-label="Try Mono">
+                <span class="t-num">05</span><span class="t-mark">&gt; INVOICE</span><span class="t-rules"></span>
+              </a>
+              <h3 class="template-name">Mono</h3>
+              <p class="template-desc"><strong>Terminal. Receipt. Repo README.</strong> IBM Plex Mono throughout, dotted dividers.</p>
+            </li>
+            <li class="template-card">
+              <a class="template-thumb thumb--ledger" style="background:#f4efe5;color:#2a2823" href="./app.html" aria-label="Try Linen">
+                <span class="t-num">06</span><span class="t-mark" style="font-family:'Instrument Serif',serif;font-weight:400;font-size:44px">Invoice</span><span class="t-rules"></span>
+              </a>
+              <h3 class="template-name">Linen</h3>
+              <p class="template-desc"><strong>Soft beige. Sage rule. Quiet.</strong> Instrument Serif, loose rhythm, hairline borders.</p>
+            </li>
+            <li class="template-card">
+              <a class="template-thumb thumb--ledger" style="background:#f6f3ec;color:#0e2a3a" href="./app.html" aria-label="Try Marine">
+                <span class="t-num">07</span><span class="t-mark" style="font-style:normal">INVOICE</span><span class="t-rules"></span>
+              </a>
+              <h3 class="template-name">Marine</h3>
+              <p class="template-desc"><strong>Navy &amp; brass.</strong> Formal correspondence vibe — Fraunces with brass accent.</p>
+            </li>
+            <li class="template-card">
+              <a class="template-thumb thumb--classic" style="background:#fafafa;color:#0a0a0a;font-family:'Geist',sans-serif" href="./app.html" aria-label="Try Carbon">
+                <span class="t-num">08</span><span class="t-mark" style="font-family:'Geist',sans-serif;font-weight:600">INVOICE</span><span class="t-rules"></span>
+              </a>
+              <h3 class="template-name">Carbon</h3>
+              <p class="template-desc"><strong>Minimal gray.</strong> Geist throughout, restrained, modern. Everything trimmed.</p>
+            </li>
+            <li class="template-card">
+              <a class="template-thumb thumb--bauhaus" style="background:#fff8ee;color:#1f2a8a" href="./app.html" aria-label="Try Riso">
+                <span class="t-num">09</span><span class="t-mark" style="text-shadow:1.5px 1.5px 0 #e63946">INVOICE</span><span class="t-rules"></span>
+              </a>
+              <h3 class="template-name">Riso</h3>
+              <p class="template-desc"><strong>Two-color zine energy.</strong> Risograph overprint feel, blue + red, raw.</p>
+            </li>
+            <li class="template-card">
+              <a class="template-thumb thumb--ledger" style="background:#1a1612;color:#f4ede0" href="./app.html" aria-label="Try Noir">
+                <span class="t-num">10</span><span class="t-mark" style="font-style:italic">Invoice</span><span class="t-rules"></span>
+              </a>
+              <h3 class="template-name">Noir</h3>
+              <p class="template-desc"><strong>Inverse.</strong> Cream ink on charcoal paper. For the dark-mode acolytes.</p>
+            </li>
+            <li class="template-card">
+              <a class="template-thumb thumb--ledger" style="background:#f5f1e3;color:#1f3a2a" href="./app.html" aria-label="Try Botanica">
+                <span class="t-num">11</span><span class="t-mark" style="font-family:'Instrument Serif',serif;font-weight:400;font-style:italic;font-size:44px">Invoice</span><span class="t-rules"></span>
+              </a>
+              <h3 class="template-name">Botanica</h3>
+              <p class="template-desc"><strong>Apothecary green.</strong> Forest ink on ivory, oldstyle figures, loose rhythm. For wellness, herbalists, slow studios.</p>
+            </li>
+            <li class="template-card">
+              <a class="template-thumb thumb--bauhaus" style="background:#fbf2dd;color:#1a1410" href="./app.html" aria-label="Try Atomic">
+                <span class="t-num">12</span><span class="t-mark" style="font-family:'Archivo',sans-serif;font-weight:800;letter-spacing:-0.035em">INVOICE</span><span class="t-rules"></span>
+              </a>
+              <h3 class="template-name">Atomic</h3>
+              <p class="template-desc"><strong>Mid-century burst.</strong> Bright orange accent, double rules, Archivo black caps. Print-shop energy.</p>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- ─── HOW ──────────────────────────────────────────────── -->
+      <section id="how" class="landing landing--how" aria-labelledby="how-h">
+        <div class="landing-inner">
+          <header class="landing-head landing-head--centered">
+            <span class="landing-eyebrow">§ how it works</span>
+            <h2 id="how-h" class="landing-title">An invoice in 30 seconds.</h2>
+            <p class="landing-lede">No tutorials, no walkthroughs, no onboarding. Pick a style, fill the form, download.</p>
+          </header>
+
+          <ol class="how-steps">
+            <li class="how-step">
+              <span class="how-num">01</span>
+              <h3 class="how-h">Pick a template.</h3>
+              <p>Twelve typographic presets. Click one and the live preview re-themes instantly.</p>
+            </li>
+            <li class="how-step">
+              <span class="how-num">02</span>
+              <h3 class="how-h">Bend it to taste.</h3>
+              <p>Color tokens, three font families, density, rule weight, total style, radius — every choice is a slider or a swatch away.</p>
+            </li>
+            <li class="how-step">
+              <span class="how-num">03</span>
+              <h3 class="how-h">Fill, then export.</h3>
+              <p>Type the figures. Hit Export. A US Letter PDF, generated in your browser. No watermarks, ever.</p>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- ─── FEATURES ─────────────────────────────────────────── -->
+      <section id="features" class="landing landing--features" aria-labelledby="features-h">
+        <div class="landing-inner">
+          <header class="landing-head">
+            <span class="landing-eyebrow">§ why ledger</span>
+            <h2 id="features-h" class="landing-title">Built for the document, not the dashboard.</h2>
+          </header>
+
+          <ul class="feature-grid">
+            <li class="feature">
+              <span class="feature-num">01</span>
+              <h3>Free, forever.</h3>
+              <p>No tier, no quota, no surprise paywall. Static site, no backend.</p>
+            </li>
+            <li class="feature">
+              <span class="feature-num">02</span>
+              <h3>No signup.</h3>
+              <p>No email, no account, no password. Open the page and start typing.</p>
+            </li>
+            <li class="feature">
+              <span class="feature-num">03</span>
+              <h3>No tracking.</h3>
+              <p>No analytics, no telemetry, no cookies. Your invoice never leaves your browser.</p>
+            </li>
+            <li class="feature">
+              <span class="feature-num">04</span>
+              <h3>Twelve typographic presets.</h3>
+              <p>Curated, not generated. Each preset is a position — not the 376th variant of the same form.</p>
+            </li>
+            <li class="feature">
+              <span class="feature-num">05</span>
+              <h3>Deep theme controls.</h3>
+              <p>Color tokens, three font families, weight, italic, letter spacing, density, rules, total bar style, radius. Every choice routes through CSS variables.</p>
+            </li>
+            <li class="feature">
+              <span class="feature-num">06</span>
+              <h3>Photocopy-safe by default.</h3>
+              <p>The Classic preset is pure black ink on white paper, designed to survive grayscale printing and faxing.</p>
+            </li>
+            <li class="feature">
+              <span class="feature-num">07</span>
+              <h3>Auto-saves locally.</h3>
+              <p>Theme and invoice content persist to your browser's storage. Close the tab, come back, pick up where you left off.</p>
+            </li>
+            <li class="feature">
+              <span class="feature-num">08</span>
+              <h3>Open source.</h3>
+              <p>Audit the code, fork it, modify it, and host it under AGPL-3.0. <a href="https://github.com/spacingmind/ledger-invoice-generator" rel="noopener">View the repository →</a></p>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ─── FAQ ──────────────────────────────────────────────── -->
+      <section id="faq" class="landing landing--faq" aria-labelledby="faq-h">
+        <div class="landing-inner">
+          <header class="landing-head">
+            <span class="landing-eyebrow">§ faq</span>
+            <h2 id="faq-h" class="landing-title">Invoice FAQ.</h2>
+            <p class="landing-lede">Common questions about Ledger and about invoicing in general.</p>
+          </header>
+
+          <div class="faq-list">
+            <details class="faq-item">
+              <summary><span class="faq-q">Is this invoice generator really free?</span><span class="faq-toggle">+</span></summary>
+              <div class="faq-a"><p>Yes. Ledger is 100% free with no signup, no paywall, no usage limits. The entire tool is a static website — there is no backend to charge for.</p></div>
+            </details>
+            <details class="faq-item">
+              <summary><span class="faq-q">Do I need to create an account?</span><span class="faq-toggle">+</span></summary>
+              <div class="faq-a"><p>No. Open the page, fill in the form, download the PDF. There's no account system.</p></div>
+            </details>
+            <details class="faq-item">
+              <summary><span class="faq-q">Can I download my invoice as a PDF?</span><span class="faq-toggle">+</span></summary>
+              <div class="faq-a"><p>Yes. Click the <em>Export PDF</em> button. The PDF is generated locally in your browser at US Letter size (8.5 × 11 inches).</p></div>
+            </details>
+            <details class="faq-item">
+              <summary><span class="faq-q">Does my data get uploaded anywhere?</span><span class="faq-toggle">+</span></summary>
+              <div class="faq-a"><p>No. Ledger runs entirely client-side. There is no analytics, tracking, or telemetry. The only persistent state is your invoice content and chosen theme, saved to your browser's localStorage.</p></div>
+            </details>
+            <details class="faq-item">
+              <summary><span class="faq-q">How customizable is the theme?</span><span class="faq-toggle">+</span></summary>
+              <div class="faq-a"><p>Pick from 12 presets, then tweak every token: <strong>paper color, ink color, accent</strong>, three font families, display weight, italic toggle, letter spacing, title scale, figure style (lining/oldstyle/tabular), density, rule weight, total bar style, and corner radius.</p></div>
+            </details>
+            <details class="faq-item">
+              <summary><span class="faq-q">Can I save my theme?</span><span class="faq-toggle">+</span></summary>
+              <div class="faq-a"><p>Your theme and invoice content auto-save to your browser. The Export tab also lets you copy the theme as JSON to paste into another browser.</p></div>
+            </details>
+            <details class="faq-item">
+              <summary><span class="faq-q">Can I print the invoice or photocopy it?</span><span class="faq-toggle">+</span></summary>
+              <div class="faq-a"><p>Yes. The default Classic preset is pure black ink on white paper specifically so it survives photocopying, faxing, and grayscale printing without losing readability.</p></div>
+            </details>
+            <details class="faq-item">
+              <summary><span class="faq-q">Is an invoice generated by Ledger legally binding?</span><span class="faq-toggle">+</span></summary>
+              <div class="faq-a"><p>An invoice is legally binding when it accurately reflects an agreed transaction between two parties. Its legal weight depends on the underlying agreement and your local tax and commercial law. When in doubt, consult a qualified accountant.</p></div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- ─── FINAL CTA ────────────────────────────────────────── -->
+      <section class="cta-strip" aria-label="Get started">
+        <div class="cta-strip-inner">
+          <h2>Ready to <em>compose?</em></h2>
+          <p>One click and you're in the editor. No email, no signup, no nonsense.</p>
+          <a href="./app.html" class="cta-primary">Open the editor</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer" role="contentinfo">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <svg class="brand-logo" viewBox="0 0 64 64" aria-hidden="true">
+            <rect x="3" y="3" width="58" height="58" rx="2" fill="none" stroke="currentColor" stroke-width="2"/>
+            <text x="32" y="46" text-anchor="middle" font-family="Fraunces, Georgia, serif"
+                  font-style="italic" font-weight="700" font-size="44" fill="currentColor">§</text>
+          </svg>
+          <p class="footer-tag">Ledger — an invoice composer.<br/>Static site. No tracking. No upload.</p>
+        </div>
+
+        <nav class="footer-nav" aria-label="Footer">
+          <div class="footer-col">
+            <h4>The tool</h4>
+            <a href="./app.html">Open the editor</a>
+            <a href="#templates">Browse templates</a>
+            <a href="#how">How it works</a>
+            <a href="#features">Features</a>
+            <a href="#faq">FAQ</a>
+          </div>
+          <div class="footer-col">
+            <h4>Use cases</h4>
+            <a href="./app.html">Free invoice template</a>
+            <a href="./app.html">Freelancer invoice</a>
+            <a href="./app.html">Contractor invoice</a>
+            <a href="./app.html">PDF invoice maker</a>
+            <a href="./app.html">Customizable invoice</a>
+          </div>
+          <div class="footer-col">
+            <h4>Project</h4>
+            <a href="https://github.com/spacingmind/ledger-invoice-generator" rel="noopener" class="footer-link-with-icon">
+              <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
+                <path fill="currentColor" d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-1.95c-3.2.7-3.87-1.54-3.87-1.54-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.18-3.1-.12-.29-.51-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.04 11.04 0 0 1 5.79 0c2.21-1.49 3.18-1.18 3.18-1.18.62 1.59.23 2.76.11 3.05.74.81 1.18 1.84 1.18 3.1 0 4.42-2.69 5.39-5.25 5.68.41.35.78 1.05.78 2.12v3.14c0 .31.21.68.8.56A10.51 10.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/>
+              </svg>
+              GitHub repository
+            </a>
+            <a href="https://github.com/spacingmind/ledger-invoice-generator/issues" rel="noopener">Report an issue</a>
+            <a href="https://github.com/spacingmind/ledger-invoice-generator/blob/main/README.md" rel="noopener">README</a>
+          </div>
+        </nav>
+
+        <div class="footer-bottom">
+          <span>© <span id="year"></span> Ledger. <span class="footer-mute">A static, open-source invoice composer.</span></span>
+          <span class="footer-mark">§</span>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      /* Custom smooth-scroll for in-page anchors. Robust against reduced-motion
+         OS settings (which neutralise CSS scroll-behavior:smooth) and gives us
+         a tunable easing curve + a fixed offset for the sticky header. */
+      (function () {
+        var HEADER_OFFSET = 72;
+        var DURATION = 720; // ms
+        var ease = function (t) { return 1 - Math.pow(1 - t, 3); }; // cubic-out
+
+        function animateScroll(targetY) {
+          var startY = window.scrollY || window.pageYOffset;
+          var distance = targetY - startY;
+          if (Math.abs(distance) < 2) return;
+          var startTime = performance.now();
+          (function step(now) {
+            var t = Math.min(1, (now - startTime) / DURATION);
+            window.scrollTo(0, startY + distance * ease(t));
+            if (t < 1) requestAnimationFrame(step);
+          })(startTime);
+        }
+
+        document.addEventListener('click', function (e) {
+          var a = e.target.closest('a[href^="#"]');
+          if (!a) return;
+          var href = a.getAttribute('href');
+          if (!href || href === '#' || href.length < 2) return;
+          var el = document.getElementById(href.slice(1));
+          if (!el) return;
+          e.preventDefault();
+          var y = el.getBoundingClientRect().top + window.scrollY - HEADER_OFFSET;
+          animateScroll(y);
+          history.pushState(null, '', href);
+        });
+      })();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,6 @@
+/* ─── SCROLLBAR — subtle, paper-tinted ───────────────────────── */
+
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--tool-border); border-radius: 999px; }
+::-webkit-scrollbar-thumb:hover { background: var(--tool-faint); }

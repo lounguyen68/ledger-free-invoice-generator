@@ -1,0 +1,127 @@
+/* ─── COMPOSE FORM ───────────────────────────────────────────── */
+
+.compose-form { padding: 0; }
+
+.compose-form label {
+  display: block;
+  font-family: var(--ui-mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--tool-mute);
+  margin-bottom: 14px;
+}
+
+.compose-form label input,
+.compose-form label textarea {
+  display: block;
+  width: 100%;
+  margin-top: 6px;
+  padding: 7px 0;
+  font-family: var(--ui-body);
+  font-size: 14.5px;
+  letter-spacing: normal;
+  text-transform: none;
+  color: var(--tool-text);
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--tool-rule);
+  border-radius: 0;
+  transition: border-color 160ms ease;
+  resize: vertical;
+}
+
+.compose-form label input::placeholder,
+.compose-form label textarea::placeholder {
+  color: var(--tool-faint);
+  font-style: italic;
+}
+
+.compose-form label input:focus,
+.compose-form label textarea:focus {
+  outline: none;
+  border-bottom-color: var(--tool-accent);
+}
+
+.compose-form label:focus-within { color: var(--tool-accent); }
+
+.row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+
+/* line items */
+.currency-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 0 14px;
+  border-bottom: 1px dashed var(--tool-rule);
+  margin-bottom: 14px;
+}
+
+.currency-label {
+  font-family: var(--ui-mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--tool-mute);
+}
+
+.currency-row .select-control { min-width: 220px; }
+.currency-row .select-control select {
+  font-family: var(--ui-mono);
+  font-size: 12px;
+}
+
+.items-head {
+  display: grid;
+  grid-template-columns: 1fr 110px 28px;
+  gap: 8px;
+  font-family: var(--ui-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--tool-mute);
+  padding: 0 0 8px;
+  border-bottom: 1px solid var(--tool-border);
+  margin-bottom: 8px;
+}
+.items-head > :nth-child(2) { text-align: right; }
+
+.item-row {
+  display: grid;
+  grid-template-columns: 1fr 110px 28px;
+  gap: 8px;
+  align-items: center;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--tool-border);
+}
+
+.item-row input {
+  width: 100%;
+  padding: 7px 0;
+  font-family: var(--ui-body);
+  font-size: 13.5px;
+  background: transparent;
+  border: none;
+  color: var(--tool-text);
+}
+
+.item-row input.item-amount {
+  font-family: var(--ui-mono);
+  font-size: 12.5px;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.item-row input:focus { outline: none; }
+
+@media (max-width: 720px) {
+  .currency-row { flex-direction: column; align-items: stretch; gap: 6px; }
+  .currency-row .select-control { min-width: 0; width: 100%; }
+  .items-head,
+  .item-row { grid-template-columns: 1fr 90px 28px; }
+}
+@media (max-width: 380px) {
+  .item-row,
+  .items-head { grid-template-columns: 1fr 76px 26px; }
+}

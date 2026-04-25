@@ -1,0 +1,116 @@
+/* ─── TAB RAIL ───────────────────────────────────────────────── */
+
+.tab-rail {
+  background: var(--tool-surface);
+  border-right: 1px solid var(--tool-border);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 12px 0;
+}
+
+.tab-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 14px 6px;
+  background: transparent;
+  border: none;
+  border-left: 2px solid transparent;
+  color: var(--tool-mute);
+  font-family: var(--ui-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 160ms ease;
+  position: relative;
+}
+
+.tab-btn-icon {
+  width: 22px; height: 22px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--ui-serif);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.tab-btn:hover {
+  color: var(--tool-text);
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.tab-btn[aria-selected="true"] {
+  color: var(--tool-text);
+  border-left-color: var(--tool-accent);
+  background: var(--tool-bg);
+}
+.tab-btn[aria-selected="true"] .tab-btn-icon { color: var(--tool-accent); }
+
+.tab-btn-num {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  font-size: 8.5px;
+  color: var(--tool-faint);
+  letter-spacing: 0.1em;
+}
+
+/* ─── TAB PANEL ──────────────────────────────────────────────── */
+
+.tab-panel {
+  background: var(--tool-bg);
+  border-right: 1px solid var(--tool-border);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.tab-panel-header {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  padding: 22px 24px 16px;
+  background: var(--tool-bg);
+  border-bottom: 1px solid var(--tool-border);
+}
+
+.tab-panel-eyebrow {
+  display: block;
+  font-family: var(--ui-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--tool-accent);
+  margin-bottom: 6px;
+}
+
+.tab-panel-title {
+  font-family: var(--ui-serif);
+  font-variation-settings: "opsz" 144, "SOFT" 30;
+  font-weight: 500;
+  font-size: 24px;
+  letter-spacing: -0.018em;
+  margin: 0 0 4px;
+  color: var(--tool-text);
+}
+
+.tab-panel-lede {
+  font-family: var(--ui-body);
+  font-size: 13px;
+  color: var(--tool-mute);
+  margin: 0;
+}
+
+.tab-panel-body {
+  padding: 20px 24px 60px;
+  flex: 1;
+  animation: fade-in 280ms ease;
+}
+
+[role="tabpanel"][hidden] { display: none; }
+
+/* responsive overrides for tab rail are colocated in editorLayout.css
+   (where the parent grid lives) because they depend on layout context */

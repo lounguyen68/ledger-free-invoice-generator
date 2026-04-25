@@ -1,0 +1,52 @@
+/* ─────────────────────────────────────────────────────────────
+   Design tokens — colours, type stacks, scrollbar, etc.
+   The single source of truth referenced by every component.
+   ───────────────────────────────────────────────────────────── */
+
+:root {
+  --tool-bg: #f6f3ec;
+  --tool-surface: #fbf8f1;
+  --tool-surface-2: #ffffff;
+  --tool-border: #d9d2c2;
+  --tool-rule: #c8c0ad;
+  --tool-text: #1c1812;
+  --tool-mute: #6f6655;
+  --tool-faint: #968b76;
+  --tool-accent: #8b2e1f;
+  --tool-gilt: #a37a3a;
+
+  --ui-display: "General Sans", "Inter Tight", system-ui, sans-serif;
+  --ui-body: "General Sans", "Inter Tight", system-ui, sans-serif;
+  --ui-serif: "Fraunces", Georgia, serif;
+  --ui-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+
+* { box-sizing: border-box; }
+
+html, body { margin: 0; padding: 0; }
+
+html { scroll-padding-top: 80px; }
+
+body {
+  font-family: var(--ui-body);
+  background: var(--tool-bg);
+  color: var(--tool-text);
+  font-size: 14px;
+  line-height: 1.55;
+  font-feature-settings: "kern", "liga", "ss01";
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 8px;
+  background: var(--tool-text);
+  color: var(--tool-surface-2);
+  padding: 8px 14px;
+  font-family: var(--ui-mono);
+  font-size: 12px;
+  z-index: 100;
+}
+.skip-link:focus { left: 12px; }

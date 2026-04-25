@@ -1,0 +1,6 @@
+/* General Sans (Fontshare — closest to Wise Sans) */
+@import url("https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap");
+/* Geist (Vercel) */
+@import url("https://api.fontshare.com/v2/css?f[]=geist@400,500,600,700&display=swap");
+/* Google */
+@import url("https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=Fraunces:opsz,wght,SOFT@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700;9..144,800;9..144,900&family=Playfair+Display:wght@400;700;800;900&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Crimson+Pro:wght@400;500;600;700&family=Archivo:wght@400;500;600;700;800&family=Archivo+Narrow:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap");

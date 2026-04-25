@@ -1,0 +1,202 @@
+/* ─── PREVIEW PANE ───────────────────────────────────────────── */
+
+.preview-pane {
+  position: relative;
+  background: linear-gradient(180deg, var(--tool-bg) 0%, #efeadf 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  overflow: auto;
+  height: 100%;
+}
+
+.preview-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 12px 28px;
+  background: rgba(246, 243, 236, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--tool-border);
+}
+
+.preview-caption {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--ui-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--tool-faint);
+}
+
+.cap-dot {
+  width: 6px; height: 6px; border-radius: 999px;
+  background: var(--tool-accent);
+}
+
+.preview-stage {
+  padding: 32px 48px 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  flex: 1;
+}
+
+/* ─── EDIT FAB & SCRIM (tablet + mobile only) ────────────────── */
+
+.edit-fab {
+  /* visible by default on tablet/mobile; the @media (min-width: 1081px)
+     block below force-hides on desktop */
+  display: inline-flex;
+  position: fixed;
+  z-index: 30;
+  left: 18px;
+  bottom: 18px;
+  align-items: center;
+  gap: 9px;
+  padding: 11px 16px 11px 14px;
+  background: var(--tool-text);
+  color: var(--tool-bg);
+  border: 1px solid var(--tool-text);
+  border-radius: 999px;
+  font-family: var(--ui-body);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.005em;
+  cursor: pointer;
+  box-shadow:
+    0 1px 0 rgba(0, 0, 0, 0.08),
+    0 12px 24px -8px rgba(0, 0, 0, 0.32),
+    0 24px 48px -16px rgba(0, 0, 0, 0.24);
+  transition: transform 220ms cubic-bezier(0.2, 0.7, 0.2, 1),
+              box-shadow 220ms ease,
+              background-color 200ms ease;
+}
+
+.edit-fab:hover {
+  background: var(--tool-accent);
+  border-color: var(--tool-accent);
+  transform: translateY(-2px);
+}
+.edit-fab:active { transform: translateY(0); }
+.edit-fab svg { flex-shrink: 0; display: block; }
+.edit-fab[aria-expanded="true"] { display: none; }
+
+.edit-scrim {
+  display: block;
+  position: fixed;
+  inset: 0;
+  z-index: 25;
+  background: rgba(28, 24, 18, 0);
+  backdrop-filter: blur(0);
+  pointer-events: none;
+  transition: background-color 240ms ease, backdrop-filter 240ms ease;
+}
+
+.edit-scrim.is-open {
+  background: rgba(28, 24, 18, 0.4);
+  backdrop-filter: blur(4px);
+  pointer-events: auto;
+}
+
+/* edit drawer's close button (within the drawer in editorLayout.css);
+   keep the Z-fight rules here so they ship with the FAB component */
+@media (min-width: 1081px) {
+  .edit-drawer-close,
+  .edit-fab,
+  .edit-scrim {
+    display: none !important;
+  }
+}
+
+body.edit-open { overflow: hidden; }
+body.edit-open .zoom-toolbar { display: none; }
+
+/* ─── ZOOM TOOLBAR ───────────────────────────────────────────── */
+
+.zoom-toolbar {
+  position: fixed;
+  z-index: 22;
+  right: 18px;
+  bottom: 18px;
+  display: inline-flex;
+  align-items: stretch;
+  background: var(--tool-surface-2);
+  border: 1px solid var(--tool-border);
+  border-radius: 999px;
+  box-shadow:
+    0 1px 0 rgba(0, 0, 0, 0.04),
+    0 8px 18px -6px rgba(0, 0, 0, 0.18);
+  overflow: hidden;
+  font-family: var(--ui-mono);
+}
+
+.zoom-btn,
+.zoom-fit {
+  background: transparent;
+  border: none;
+  color: var(--tool-mute);
+  cursor: pointer;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 140ms ease;
+  font-family: inherit;
+}
+
+.zoom-btn { width: 36px; height: 36px; }
+.zoom-fit {
+  padding: 0 12px;
+  height: 36px;
+  font-size: 11.5px;
+  letter-spacing: 0.06em;
+  color: var(--tool-text);
+  border-left: 1px solid var(--tool-border);
+  border-right: 1px solid var(--tool-border);
+  font-variant-numeric: tabular-nums;
+  min-width: 64px;
+}
+
+.zoom-btn:hover,
+.zoom-fit:hover {
+  color: var(--tool-accent);
+  background: rgba(139, 46, 31, 0.05);
+}
+
+.zoom-btn svg { display: block; }
+
+@media (max-width: 720px) {
+  .preview-pane { height: calc(100vh - 52px); }
+  .preview-stage { padding: 18px 12px 96px; }
+
+  .edit-fab {
+    left: 14px;
+    bottom: 14px;
+    padding: 13px 18px 13px 16px;
+    font-size: 14px;
+  }
+
+  .zoom-toolbar {
+    right: 14px;
+    bottom: 14px;
+  }
+  .zoom-btn { width: 32px; height: 32px; }
+  .zoom-fit { height: 32px; min-width: 56px; padding: 0 10px; font-size: 11px; }
+}
+
+@media (max-height: 600px) {
+  .edit-fab { bottom: 12px; padding: 8px 14px 8px 12px; }
+  .zoom-toolbar { bottom: 12px; }
+}
+
+@media (max-width: 900px) {
+  .preview-stage { padding: 24px 20px 100px; }
+}

@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <title>Editor — Ledger Free Invoice Generator</title>
+    <meta name="description" content="Compose your invoice with deep theme controls and instant PDF export." />
+    <meta name="robots" content="noindex, follow" />
+    <meta name="theme-color" content="#1c1812" />
+
+    <link rel="canonical" href="https://spacingmind.github.io/ledger-invoice-generator/app.html" />
+    <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg" />
+    <link rel="stylesheet" href="./src/styles.css" />
+  </head>
+  <body class="app-body">
+    <a href="#tab-rail" class="skip-link">Skip to controls</a>
+
+    <!-- Mounted by HeaderView -->
+    <div id="app-header-host"></div>
+
+    <div class="editor-layout">
+      <!-- Edit drawer wraps the tab rail + tab panel.
+           Desktop: display: contents (transparent grid wrapper).
+           Tablet/mobile: position: fixed slide-in panel. -->
+      <div id="edit-drawer" class="edit-drawer" aria-label="Editor">
+        <button type="button" class="edit-drawer-close" id="edit-drawer-close" aria-label="Close editor">
+          <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
+            <path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" d="M6 6 L18 18 M18 6 L6 18"/>
+          </svg>
+        </button>
+        <!-- Mounted by TabsView (rail + panel + 3 tab hosts inside) -->
+        <div id="tab-rail-host" style="display: contents"></div>
+      </div>
+
+      <!-- Mounted by AppController.mountShell — emits FAB + scrim + zoom toolbar + preview pane -->
+      <div id="preview-host" style="display: contents"></div>
+    </div>
+
+    <script type="module" src="./dist/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,97 @@
+import { formatCurrency } from "../../models/format.js";
+import { invoiceHTML } from "./invoiceView.html.js";
+export class InvoiceView {
+    constructor(model, theme) {
+        this.model = model;
+        this.theme = theme;
+    }
+    get element() { return this.root; }
+    mount(host) {
+        host.innerHTML = invoiceHTML();
+        this.root = host.querySelector("#invoice");
+        this.body = host.querySelector("#items-body");
+        this.totalCell = host.querySelector("#total-cell");
+        this.renderFields();
+        this.renderItems();
+        this.applyTheme();
+        this.model.subscribe((detail) => {
+            if (detail.kind === "field" || detail.kind === "reset")
+                this.renderFields();
+            if (detail.kind === "items" || detail.kind === "currency" || detail.kind === "reset")
+                this.renderItems();
+        });
+        this.theme.subscribe(() => this.applyTheme());
+    }
+    renderFields() {
+        const fields = this.model.getData().fields;
+        const stringFields = fields;
+        this.root.querySelectorAll("[data-bind]").forEach((el) => {
+            const key = el.dataset["bind"];
+            if (!key)
+                return;
+            const value = stringFields[key] ?? "";
+            const placeholder = el.dataset["placeholder"] ?? "";
+            if (value.trim() === "" && placeholder) {
+                el.textContent = placeholder;
+                el.classList.add("is-placeholder");
+            }
+            else {
+                el.textContent = value;
+                el.classList.remove("is-placeholder");
+            }
+        });
+        /* logo: only the slot matching the current layout receives a src */
+        const url = fields.logo;
+        const layoutSlot = this.layoutToSlot(fields.logoLayout);
+        this.root.querySelectorAll("[data-bind-src='logo']").forEach((img) => {
+            const isActiveSlot = img.classList.contains(`sender-logo--${layoutSlot}`);
+            if (url && isActiveSlot) {
+                img.src = url;
+                img.removeAttribute("hidden");
+            }
+            else {
+                img.removeAttribute("src");
+                img.setAttribute("hidden", "");
+            }
+        });
+        ["stacked", "inline", "right", "centered"].forEach((c) => {
+            this.root.classList.remove(`logo-layout--${c}`);
+        });
+        if (url)
+            this.root.classList.add(`logo-layout--${layoutSlot}`);
+        this.root.style.setProperty("--logo-width", `${fields.logoWidth}in`);
+        this.root.style.setProperty("--logo-height", `${fields.logoHeight}in`);
+    }
+    layoutToSlot(layout) {
+        switch (layout) {
+            case "inline-left": return "inline";
+            case "right": return "right";
+            case "centered": return "centered";
+            case "stacked-left":
+            default: return "stacked";
+        }
+    }
+    renderItems() {
+        const data = this.model.getData();
+        const { items, currency } = data;
+        this.body.innerHTML = "";
+        items.forEach((item) => {
+            const tr = document.createElement("tr");
+            const tdDesc = document.createElement("td");
+            tdDesc.textContent = item.description;
+            const tdAmt = document.createElement("td");
+            tdAmt.className = "col-amount";
+            tdAmt.textContent = formatCurrency(item.amount, currency);
+            tr.appendChild(tdDesc);
+            tr.appendChild(tdAmt);
+            this.body.appendChild(tr);
+        });
+        this.totalCell.textContent = formatCurrency(this.model.total(), currency);
+    }
+    applyTheme() {
+        this.theme.applyTo(this.root);
+        this.root.style.animation = "none";
+        void this.root.offsetWidth;
+        this.root.style.animation = "";
+    }
+}

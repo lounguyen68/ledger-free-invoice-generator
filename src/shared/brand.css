@@ -1,0 +1,29 @@
+/* ─── BRAND LOGO + LINK — used in app and landing headers ────── */
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--ui-body);
+  text-decoration: none;
+  color: inherit;
+}
+
+.brand-logo {
+  width: 28px;
+  height: 28px;
+  color: var(--tool-text);
+  flex-shrink: 0;
+}
+
+.brand-name {
+  font-family: var(--ui-serif);
+  font-variation-settings: "opsz" 144;
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  color: var(--tool-text);
+}
+
+.brand-sep { color: var(--tool-faint); font-size: 14px; }
+.brand-sub { font-style: italic; font-size: 13px; color: var(--tool-mute); letter-spacing: 0.005em; }

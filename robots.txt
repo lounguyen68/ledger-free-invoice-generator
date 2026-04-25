@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://spacingmind.github.io/ledger-invoice-generator/sitemap.xml
