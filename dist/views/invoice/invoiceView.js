@@ -1,4 +1,5 @@
-import { formatCurrency } from "../../models/format.js";
+import { BANK_RAILS } from "../../models/bankRails.js";
+import { escapeHtml, formatCurrency } from "../../models/format.js";
 import { invoiceHTML } from "./invoiceView.html.js";
 export class InvoiceView {
     constructor(model, theme) {
@@ -25,6 +26,7 @@ export class InvoiceView {
     renderFields() {
         const fields = this.model.getData().fields;
         const stringFields = fields;
+        this.renderBankBlock(fields);
         this.root.querySelectorAll("[data-bind]").forEach((el) => {
             const key = el.dataset["bind"];
             if (!key)
@@ -61,6 +63,24 @@ export class InvoiceView {
             this.root.classList.add(`logo-layout--${layoutSlot}`);
         this.root.style.setProperty("--logo-width", `${fields.logoWidth}in`);
         this.root.style.setProperty("--logo-height", `${fields.logoHeight}in`);
+    }
+    /** Rebuild the FROM-box bank lines for the active rail. Empty values are
+     *  skipped so a half-filled rail doesn't print a row of orphan labels. */
+    renderBankBlock(fields) {
+        const slot = this.root.querySelector("[data-bank-print]");
+        if (!slot)
+            return;
+        const rail = BANK_RAILS[fields.bankRail];
+        const lines = [];
+        for (const spec of rail.fields) {
+            const raw = fields[spec.key] ?? "";
+            const v = raw.trim();
+            if (!v)
+                continue;
+            const label = spec.printLabel ? `${escapeHtml(spec.printLabel)}: ` : "";
+            lines.push(`<div>${label}<span>${escapeHtml(v)}</span></div>`);
+        }
+        slot.innerHTML = lines.join("");
     }
     layoutToSlot(layout) {
         switch (layout) {

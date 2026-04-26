@@ -6,7 +6,7 @@ Ledger is a free, no-signup, open-source invoice generator built for people who 
 
 **Live:** https://spacingmind.github.io/ledger-invoice-generator/
 
-![Ledger — Invoice, composed.](assets/og-image.svg)
+![Ledger — Invoice, composed.](assets/og-image.png)
 
 ## Highlights
 

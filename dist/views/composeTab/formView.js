@@ -1,4 +1,5 @@
 import { CURRENCIES, isCurrencyCode } from "../../models/currency.js";
+import { BANK_RAILS, isBankRail } from "../../models/bankRails.js";
 import { escapeAttr } from "../../models/format.js";
 import { composeFormHTML } from "./formView.html.js";
 const MAX_LOGO_BYTES = 1024 * 1024; // 1 MB hard cap (localStorage budget is ~5 MB)
@@ -28,12 +29,18 @@ export class FormView {
         this.logoWidthDisplay = host.querySelector("#logo-width-display");
         this.logoHeightDisplay = host.querySelector("#logo-height-display");
         this.positionPicker = host.querySelector(".position-picker");
+        this.bankRailSwitch = host.querySelector(".bank-rail-switch");
+        this.bankRailHint = host.querySelector("[data-bank-rail-hint]");
+        this.bankFieldsContainer = host.querySelector("[data-bank-fields]");
+        this.renderBankFields();
         this.syncFieldsFromModel();
         this.renderItems();
         this.populateCurrency();
         this.syncCurrency();
         this.bindLogo();
+        this.bindBankRail();
         this.syncLogo();
+        this.syncBankRail();
         this.form.addEventListener("input", (e) => {
             const target = e.target;
             // Item rows handle their own input — skip to avoid double work
@@ -61,12 +68,53 @@ export class FormView {
             }
             if (detail.kind === "field" || detail.kind === "reset") {
                 this.syncLogo();
+                this.syncBankRail();
             }
             if (detail.kind === "reset") {
+                this.renderBankFields();
                 this.syncFieldsFromModel();
                 this.renderItems();
             }
         });
+    }
+    /* ── bank rail ─────────────────────────────────────────────── */
+    bindBankRail() {
+        this.bankRailSwitch?.querySelectorAll("[data-rail]").forEach((btn) => {
+            btn.addEventListener("click", () => {
+                const v = btn.dataset["rail"];
+                if (!isBankRail(v))
+                    return;
+                this.model.setBankRail(v);
+                /* re-render the fields list for the new rail; values for the new
+                   rail come from the model so prior input is preserved. */
+                this.renderBankFields();
+                this.syncFieldsFromModel();
+            });
+        });
+    }
+    /** Render the active rail's fields into the bank fields container.
+     *  Values are set from the model right after via syncFieldsFromModel. */
+    renderBankFields() {
+        if (!this.bankFieldsContainer)
+            return;
+        const rail = BANK_RAILS[this.model.getData().fields.bankRail];
+        this.bankFieldsContainer.innerHTML = rail.fields.map((spec) => {
+            const ph = spec.placeholder ? ` placeholder="${escapeAttr(spec.placeholder)}"` : "";
+            return `<label>${escapeAttr(spec.label)}<input type="text" name="${spec.key}"${ph} /></label>`;
+        }).join("");
+    }
+    /** Sync the rail switch's visual state + hint text to the current model. */
+    syncBankRail() {
+        const rail = this.model.getData().fields.bankRail;
+        if (this.bankRailSwitch) {
+            this.bankRailSwitch.dataset["rail"] = rail;
+            this.bankRailSwitch.querySelectorAll("[data-rail]").forEach((btn) => {
+                btn.setAttribute("aria-selected", btn.dataset["rail"] === rail ? "true" : "false");
+            });
+        }
+        if (this.bankRailHint) {
+            this.bankRailHint.textContent = BANK_RAILS[rail].hint;
+        }
     }
     bindLogo() {
         /* file input → model */

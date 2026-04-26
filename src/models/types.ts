@@ -9,6 +9,11 @@ export type LogoLayout =
   | "right"          // logo top-right (replaces invoice title position)
   | "centered";      // logo top-center, full-width banner above sender
 
+/** Which set of bank fields is active. Local for domestic transfers
+ *  (no SWIFT needed), SWIFT for international, IBAN for SEPA / European.
+ *  Each rail has its own field subset rendered on the invoice. */
+export type BankRail = "local" | "swift" | "iban";
+
 export type InvoiceFields = {
   /** Optional company/agency logo as a base64 data URL (or "" for none). */
   logo: string;
@@ -24,13 +29,19 @@ export type InvoiceFields = {
   senderPhone: string;
   invoiceNumber: string;
   invoiceDate: string;
+  /** Active bank rail — controls which fields are shown on the form & invoice. */
+  bankRail: BankRail;
   bankHolder: string;
-  swift: string;
+  swift: string;            // SWIFT/BIC — used by SWIFT rail
   bankName: string;
   bankCountry: string;
   accountNumber: string;
   payeeAddress: string;
   bankAddress: string;
+  routingCode: string;      // local rail (ABA / Sort code / BSB / etc.)
+  branch: string;           // local rail (branch / chi nhánh)
+  iban: string;             // IBAN rail
+  bic: string;              // IBAN rail (BIC code)
   forSubject: string;
   paymentDetails: string;
   preparedBy: string;

@@ -30,11 +30,18 @@ export class ZoomController {
     this.fitBtn = document.getElementById("zoom-fit") as HTMLButtonElement | null;
     this.display = document.getElementById("zoom-display");
 
-    /* Load stored zoom, otherwise fit-to-width on small screens, 100% on desktop */
+    /* Load stored zoom, otherwise fit-to-width on small screens, 100% on
+       desktop. If a stored zoom would overflow the current (narrow)
+       viewport, override to fit-to-width — never start with horizontal
+       scroll on tablet/mobile. */
     const stored = this.load();
     if (stored !== null) {
       this.zoom = stored;
       this.fitToWidth = false;
+      if (this.viewportTooNarrow()) {
+        const fit = this.computeFit();
+        if (this.zoom > fit + 0.001) this.fitToWidth = true;
+      }
     } else if (this.viewportTooNarrow()) {
       this.fitToWidth = true;
     }
@@ -61,9 +68,16 @@ export class ZoomController {
       else if (e.key === "0") { e.preventDefault(); this.set(1); }
     });
 
-    /* Recompute fit-to-width on resize */
+    /* Recompute fit-to-width on resize. If the user has a fixed zoom that
+       would now overflow the (smaller) stage, silently downgrade to fit so
+       the preview never has horizontal scrollbars on tablet/mobile. */
     window.addEventListener("resize", () => {
-      if (this.fitToWidth) this.apply();
+      if (this.fitToWidth) { this.apply(); return; }
+      const fit = this.computeFit();
+      if (this.zoom > fit + 0.001 && this.viewportTooNarrow()) {
+        this.fitToWidth = true;
+        this.apply();
+      }
     });
 
     this.apply();
@@ -111,18 +125,24 @@ export class ZoomController {
 
   private computeFit(): number {
     if (!this.stage || !this.invoiceEl) return 1;
-    const stageWidth = this.stage.clientWidth - FIT_PADDING;
-    /* invoice native width is 8.5in. Use offsetWidth pre-transform — but the
-       transform may already be applied. Use a known constant: 8.5in in px =
-       8.5 * 96 = 816 (assuming the browser's default 96 DPI). */
+    /* Use the actual stage padding instead of a flat constant — this is
+       reliable across breakpoints (12px on phones, 48px on desktop). */
+    const cs = window.getComputedStyle(this.stage);
+    const padX = parseFloat(cs.paddingLeft || "0") + parseFloat(cs.paddingRight || "0");
+    const stageWidth = this.stage.clientWidth - padX;
+    /* invoice native width is 8.5in. 8.5 * 96 = 816px @ default DPI. */
     const invoiceNativeWidth = 8.5 * 96;
     const fit = stageWidth / invoiceNativeWidth;
-    return clamp(fit, MIN, 1.0);
+    /* Allow fit to go smaller than the manual MIN (down to 0.3) — a 360px
+       phone needs ~0.42 just to fit, and we never want overflow at fit. */
+    return clamp(fit, 0.3, 1.0);
   }
 
   private viewportTooNarrow(): boolean {
-    /* invoice is 816px wide + ~96px padding on either side = ~1008px */
-    return window.innerWidth < 980;
+    /* invoice is 816px wide; below ~1024px the preview pane (after the
+       editor drawer offset on tablet) doesn't have room for 100% scale
+       without horizontal scroll — auto-fit is the friendlier default. */
+    return window.innerWidth <= 1024;
   }
 
   private persist(): void {

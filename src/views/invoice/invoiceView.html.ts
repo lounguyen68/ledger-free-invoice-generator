@@ -34,12 +34,7 @@ export const invoiceHTML = (): string => `
       <div class="from-box">
         <div class="box-label">FROM:</div>
         <div class="bank-holder" data-bind="bankHolder" data-placeholder="Name with Bank"></div>
-        <div>SWIFT Code: <span data-bind="swift"></span></div>
-        <div>Bank Name: <span data-bind="bankName"></span></div>
-        <div>Country: <span data-bind="bankCountry"></span></div>
-        <div>Account number: <span data-bind="accountNumber"></span></div>
-        <div>Payee Address: <span data-bind="payeeAddress"></span></div>
-        <div>Bank Address: <span data-bind="bankAddress"></span></div>
+        <div data-bank-print></div>
       </div>
       <div class="for-box">
         <div class="box-label">FOR:</div>

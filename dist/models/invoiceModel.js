@@ -1,4 +1,5 @@
 import { isCurrencyCode } from "./currency.js";
+import { isBankRail } from "./bankRails.js";
 import { defaultInvoice } from "./defaults.js";
 const STORAGE_KEY = "ledger.invoice";
 const clamp = (n, min, max) => Math.min(max, Math.max(min, n));
@@ -16,11 +17,13 @@ export class InvoiceModel extends EventTarget {
     setFieldsFromForm(form) {
         const fd = new FormData(form);
         Object.keys(this.data.fields).forEach((key) => {
-            /* Out-of-band fields (file upload, sliders, position picker) are NOT
-               driven by the form's input event — skip to avoid the type system
-               rejecting numeric/enum assignments and to avoid clobbering them. */
+            /* Out-of-band fields (file upload, sliders, position picker, bank rail
+               radio group) are NOT driven by the form's input event — skip to
+               avoid the type system rejecting numeric/enum assignments and to
+               avoid clobbering them. */
             if (key === "logo" || key === "logoLayout"
-                || key === "logoWidth" || key === "logoHeight")
+                || key === "logoWidth" || key === "logoHeight"
+                || key === "bankRail")
                 return;
             const v = fd.get(key);
             if (typeof v !== "string")
@@ -29,6 +32,13 @@ export class InvoiceModel extends EventTarget {
                because InvoiceFields contains numeric fields too. */
             this.data.fields[key] = v;
         });
+        this.persist();
+        this.emit("field");
+    }
+    setBankRail(rail) {
+        if (this.data.fields.bankRail === rail)
+            return;
+        this.data.fields.bankRail = rail;
         this.persist();
         this.emit("field");
     }
@@ -119,6 +129,17 @@ export class InvoiceModel extends EventTarget {
                 f.logoWidth = 1.6;
             if (typeof f.logoHeight !== "number" || !Number.isFinite(f.logoHeight))
                 f.logoHeight = 0.8;
+            /* Bank rail + per-rail fields (added later — older saves won't have them). */
+            if (!isBankRail(f.bankRail))
+                f.bankRail = "swift";
+            if (typeof f.routingCode !== "string")
+                f.routingCode = "";
+            if (typeof f.branch !== "string")
+                f.branch = "";
+            if (typeof f.iban !== "string")
+                f.iban = "";
+            if (typeof f.bic !== "string")
+                f.bic = "";
             return parsed;
         }
         catch {

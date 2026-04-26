@@ -202,7 +202,19 @@ export class DrawerController {
         return n ? `#${n}` : "—";
       }
       case "bank": {
-        return get("bankName") || "—";
+        /* Bank meta: prefer the rail's most-identifying field if filled.
+           The rail switch sets data-rail on the switch; fall back to bankName
+           if the switch isn't mounted yet. */
+        const rail = document.querySelector<HTMLElement>(".bank-rail-switch")?.dataset["rail"];
+        const candidates =
+          rail === "iban"  ? ["iban", "bankName"] :
+          rail === "local" ? ["bankName", "accountNumber"] :
+                             ["bankName", "swift"];
+        for (const name of candidates) {
+          const v = get(name);
+          if (v) return v;
+        }
+        return "—";
       }
       case "for": {
         return get("forSubject") || "—";

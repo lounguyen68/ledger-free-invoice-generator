@@ -43,13 +43,18 @@ export const composeFormHTML = (): string => `
         <span class="drawer-glyph" aria-hidden="true">›</span>
       </summary>
       <div class="drawer-body">
+        <div class="bank-rail-switch" role="tablist" aria-label="Bank rail">
+          <button type="button" role="tab" class="rail-tab" data-rail="local"
+            aria-selected="false">Local</button>
+          <button type="button" role="tab" class="rail-tab" data-rail="swift"
+            aria-selected="true">SWIFT</button>
+          <button type="button" role="tab" class="rail-tab" data-rail="iban"
+            aria-selected="false">IBAN</button>
+          <span class="rail-tab-indicator" aria-hidden="true"></span>
+        </div>
+        <p class="bank-rail-hint" data-bank-rail-hint></p>
         <label>Name with Bank<input type="text" name="bankHolder" placeholder="Name with Bank" /></label>
-        <label>SWIFT Code<input type="text" name="swift" /></label>
-        <label>Bank Name<input type="text" name="bankName" /></label>
-        <label>Country<input type="text" name="bankCountry" /></label>
-        <label>Account number<input type="text" name="accountNumber" /></label>
-        <label>Payee Address<input type="text" name="payeeAddress" /></label>
-        <label>Bank Address<input type="text" name="bankAddress" /></label>
+        <div data-bank-fields></div>
       </div>
     </details>
 
