@@ -32,5 +32,8 @@
 /* landing page */
 @import url("./landing.css");
 
+/* embed mode — before print so print rules still win */
+@import url("./embed.css");
+
 /* print — must be last so its !important wins */
 @import url("./print.css");

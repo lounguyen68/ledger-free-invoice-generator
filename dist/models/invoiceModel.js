@@ -9,6 +9,11 @@ export class InvoiceModel extends EventTarget {
         this.data = initial ?? InvoiceModel.load() ?? defaultInvoice();
     }
     getData() { return this.data; }
+    setData(data) {
+        this.data = structuredClone(data);
+        this.persist();
+        this.emit("reset");
+    }
     setField(key, value) {
         this.data.fields[key] = value;
         this.persist();

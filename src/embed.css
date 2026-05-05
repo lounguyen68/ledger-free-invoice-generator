@@ -1,0 +1,20 @@
+/* ─────────────────────────────────────────────────────────────
+   Embed mode — hides all editor UI chrome when Ledger runs
+   inside an iframe with ?embed in the query string.
+   ───────────────────────────────────────────────────────────── */
+
+body.embed-mode .app-header,
+body.embed-mode .edit-drawer,
+body.embed-mode .edit-fab,
+body.embed-mode .edit-scrim,
+body.embed-mode .preview-toolbar,
+body.embed-mode .zoom-toolbar { display: none !important; }
+
+body.embed-mode { background: transparent; overflow: hidden; }
+
+/* Preview pane fills the entire iframe viewport */
+body.embed-mode .preview-pane {
+  position: fixed;
+  inset: 0;
+  overflow: auto;
+}

@@ -16,6 +16,8 @@ export class ThemeModel extends EventTarget {
     }
     get() { return this.current; }
     getPresetId() { return this.presetId; }
+    applyPreset(id) { this.selectPreset(id); }
+    getCurrentPresetId() { return this.presetId; }
     isDirty() {
         const preset = findPreset(this.presetId);
         if (!preset)

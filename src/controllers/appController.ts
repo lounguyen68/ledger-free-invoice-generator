@@ -20,8 +20,8 @@ import { PdfController } from "./pdfController.js";
  * (drawer, preview, zoom, PDF, modal).
  */
 export class AppController {
-  private invoice: InvoiceModel;
-  private theme: ThemeModel;
+  readonly invoice: InvoiceModel;
+  readonly theme: ThemeModel;
   private modal: ModalView;
 
   private header: HeaderView;

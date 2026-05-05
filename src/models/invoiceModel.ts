@@ -26,6 +26,12 @@ export class InvoiceModel extends EventTarget {
 
   getData(): InvoiceData { return this.data; }
 
+  setData(data: InvoiceData): void {
+    this.data = structuredClone(data);
+    this.persist();
+    this.emit("reset");
+  }
+
   setField<K extends keyof InvoiceFields>(key: K, value: InvoiceFields[K]): void {
     this.data.fields[key] = value;
     this.persist();
